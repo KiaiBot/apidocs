@@ -12,6 +12,9 @@ info:
     url: 'https://www.mit.edu/~amini/LICENSE.md'
 servers:
   - url: 'https://kiaibot.com/api/v1'
+    description: "Production"
+  - url: 'https://beta.kiaibot.com/api/v1'
+    description: "Beta"
 paths:
   /status:
     get:
