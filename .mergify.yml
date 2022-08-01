@@ -1,0 +1,8 @@
+pull_request_rules:
+  - name: Automerge sync
+    conditions:
+      - label=sync
+      - author=thekiaibot
+    actions:
+      merge:
+        method: squash
