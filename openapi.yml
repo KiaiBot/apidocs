@@ -1,0 +1,35 @@
+openapi: 3.1.0
+info:
+  title: Kiai
+  version: '1.0'
+  summary: The main API for Kiai!
+  contact:
+    name: Shadow
+    email: shadow@kiaibot.com
+    url: 'https://kiaibot.com'
+  description: The main API for Kiai
+  license:
+    name: MIT
+    url: 'https://www.mit.edu/~amini/LICENSE.md'
+servers:
+  - url: 'https://kiaibot.com/api/v1'
+paths:
+  /status:
+    get:
+      summary: Get the status of the bot
+      responses:
+        '200':
+          description: Returned when the bot is online
+        '408':
+          description: Returned when unable to get the bot's status
+        '503':
+          description: Returned when the bot is offline
+      operationId: get-status
+      description: Get the status of the bot
+components:
+  schemas: {}
+  securitySchemes:
+    x-api-key:
+      type: apiKey
+      in: header
+      name: API Key
