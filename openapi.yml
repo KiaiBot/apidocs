@@ -12,20 +12,17 @@ info:
     url: 'https://www.mit.edu/~amini/LICENSE.md'
 servers:
   - url: 'https://kiaibot.com/api/v1'
-    description: "Production"
-  - url: 'https://beta.kiaibot.com/api/v1'
-    description: "Beta"
 paths:
   /status:
     get:
       summary: Get the status of the bot
       responses:
         '200':
-          description: Returned when the bot is online.
+          description: Returned when the bot is online
         '408':
-          description: Returned when unable to get the status of the bot.
+          description: Returned when unable to get the bot's status
         '503':
-          description: Returned when the bot is offline.
+          description: Returned when the bot is offline
       operationId: get-status
       description: Get the status of the bot
 components:
