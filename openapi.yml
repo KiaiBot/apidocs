@@ -1,8 +1,8 @@
 openapi: 3.1.0
 info:
   title: Kiai
-  version: '1.0'
-  summary: The main API for Kiai!
+  version: '0.1.0'
+  summary: The main API for Kiai
   contact:
     name: Shadow
     email: shadow@kiaibot.com
