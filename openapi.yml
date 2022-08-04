@@ -28,7 +28,7 @@ paths:
 components:
   schemas: {}
   securitySchemes:
-    x-api-key:
+    ApiKeyAuth:
       type: apiKey
       in: header
-      name: API Key
+      name: X-API-Key
