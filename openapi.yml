@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Kiai
-  version: '0.1.0'
+  version: 0.1.0
   contact:
     name: Shadow
     email: shadow@kiaibot.com
@@ -19,6 +19,13 @@ paths:
       responses:
         '200':
           description: Returned when the bot is online
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
         '408':
           description: Returned when unable to get the bot's status
         '503':
