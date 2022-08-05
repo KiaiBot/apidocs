@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: Kiai
-  version: 0.1.0
+  version: '0'
   contact:
     name: Shadow
     email: shadow@kiaibot.com
@@ -11,7 +11,8 @@ info:
     name: MIT
     url: 'https://www.mit.edu/~amini/LICENSE.md'
 servers:
-  - url: 'https://api.kiaibot.com'
+  - url: 'https://api.kiaibot.com/v0'
+    description: v0
 paths:
   /status:
     get:
@@ -110,6 +111,67 @@ paths:
                     message: Guild not found
       operationId: get-guild-id
       description: Get the config of a guild
+  '/guild/{guildId}/user/{userId}':
+    parameters:
+      - schema:
+          type: string
+          minLength: 17
+          maxLength: 19
+          pattern: '[0-9]{17,19}'
+        name: guildId
+        in: path
+        description: The ID of the guild you want to get
+        required: true
+      - schema:
+          type: string
+          minLength: 17
+          maxLength: 19
+          pattern: '[0-9]{17,19}'
+        name: userId
+        in: path
+        description: The ID of the guild you want to get
+        required: true
+    get:
+      summary: Guild Config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: string
+                  guildId:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  xp:
+                    type: integer
+                x-examples:
+                  example-1:
+                    userId: '439223656200273932'
+                    guildId: '608098293498511360'
+                    createdAt: '2022-08-05T22:32:14.817Z'
+                    updatedAt: '2022-08-05T22:32:15.190Z'
+                    xp: 1005
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                x-examples:
+                  example-1:
+                    message: Guild not found
+      operationId: get-guilduser-id
+      description: Get the xp of a user
 components:
   schemas: {}
   securitySchemes:
