@@ -26,12 +26,90 @@ paths:
                 properties:
                   message:
                     type: string
-        '408':
-          description: Returned when unable to get the bot's status
-        '503':
-          description: Returned when the bot is offline
       operationId: get-status
       description: Get the status of the bot
+  '/guild/{id}':
+    parameters:
+      - schema:
+          type: string
+          minLength: 17
+          maxLength: 19
+          pattern: '[0-9]{17,19}'
+        name: id
+        in: path
+        description: The ID of the guild you want to get
+        required: true
+    get:
+      summary: Guild Config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  globalMulti:
+                    type: integer
+                  channelMultipliers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        guildId:
+                          type: string
+                        channel:
+                          type: string
+                        multiplier:
+                          type: integer
+                  roleMultipliers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        guildId:
+                          type: string
+                        role:
+                          type: string
+                        multiplier:
+                          type: integer
+                  levelUpMessage:
+                    type: string
+                x-examples:
+                  example-1:
+                    id: '608098293498511360'
+                    createdAt: '2022-07-26T04:28:38.914Z'
+                    updatedAt: '2022-07-28T07:28:53.332Z'
+                    globalMulti: 100
+                    channelMultipliers:
+                      - guildId: '608098293498511360'
+                        channel: '847183155303284746'
+                        multiplier: 30
+                    roleMultipliers:
+                      - guildId: '608098293498511360'
+                        role: '1000146102160461967'
+                        multiplier: 30
+                    levelUpMessage: Hi
+        '404':
+          description: Guild not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                x-examples:
+                  example-1:
+                    message: Guild not found
+      operationId: get-guild-id
+      description: Get the config of a guild
 components:
   schemas: {}
   securitySchemes:
@@ -39,3 +117,4 @@ components:
       type: apiKey
       in: header
       name: X-API-Key
+      description: ''
